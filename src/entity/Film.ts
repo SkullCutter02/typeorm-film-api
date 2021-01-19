@@ -1,7 +1,7 @@
 import { Column, Entity, JoinTable, ManyToMany, Unique } from "typeorm";
 import { Min, Max, Length } from "class-validator";
-import Actor from "./Actor";
 
+import Actor from "./Actor";
 import Model from "./Model";
 
 @Entity("films")
