@@ -79,6 +79,9 @@ router.put("/:uuid", async (req: Request, res: Response) => {
     film.rating = rating || film.rating;
     film.actors = actors || film.actors;
 
+    const errors = await validate(film);
+    if (errors.length > 0) throw errors;
+
     await film.save();
     return res.json(film);
   } catch (err) {

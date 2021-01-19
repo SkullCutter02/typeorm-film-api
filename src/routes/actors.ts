@@ -58,6 +58,9 @@ router.put("/:uuid", async (req: Request, res: Response) => {
     actor.name = name || actor.name;
     actor.age = age || actor.age;
 
+    const errors = await validate(actor);
+    if (errors.length > 0) throw errors;
+
     await actor.save();
     return res.json(actor);
   } catch (err) {
